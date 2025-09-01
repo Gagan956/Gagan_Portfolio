@@ -222,14 +222,18 @@ export default function Contact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
               >
-                <Button
+                <button
                   type="submit"
-                  size="lg"
                   className="w-full"
                 >
-                  <Send size={20} className="mr-2" />
-                  Send Message
-                </Button>
+                  <Button
+                    size="lg"
+                    className="w-full"
+                  >
+                    <Send size={20} className="mr-2" />
+                    Send Message
+                  </Button>
+                </button>
               </motion.div>
             </form>
           </Card>
