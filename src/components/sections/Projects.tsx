@@ -13,15 +13,15 @@ const projects: Project[] = [
     id: "1",
     title: "Medimeet",
     description:
-      "Medimeet is a full-stack doctor appointment platform built with Next.js and Shadcn UI, featuring secure authentication, doctor-patient management, scheduling, and Stripe payments for a seamless booking experience.",
+      "A full-stack doctor appointment platform with Next.js, Shadcn UI, scheduling, secure authentication, and Stripe integration.",
     image: "/images/Medimeet.png",
     technologies: [
       "Next.js",
       "TypeScript",
       "Stripe",
       "PostgreSQL",
-      "Tailwind CSS",
-      "Vonage (video calling)",
+      "Tailwind",
+      "Vonage",
     ],
     liveUrl: "https://medimeet-black.vercel.app/",
     githubUrl: "https://github.com/Gagan956/Medimeet",
@@ -30,9 +30,9 @@ const projects: Project[] = [
     id: "2",
     title: "Hireme",
     description:
-      "HireMe is a frontend job portal built with Next.js and TypeScript, featuring job listings, application forms, and a clean, responsive UI for a smooth hiring experience.",
+      "A frontend job portal built with Next.js and TypeScript, featuring listings, applications, and a responsive UI.",
     image: "/images/Hireme.png",
-    technologies: ["React", "Next.js", "Responsive Design", "Tailwind CSS"],
+    technologies: ["React", "Next.js", "Tailwind CSS"],
     liveUrl: "https://hireme-lemon.vercel.app",
     githubUrl: "https://github.com/Gagan956/Hireme.git",
   },
@@ -40,38 +40,18 @@ const projects: Project[] = [
     id: "3",
     title: "Foodhub",
     description:
-      "Foodhub is a full-stack food ordering platform built with Next.js, React, TypeScript, and MongoDB, featuring secure authentication, menu browsing, cart management, and real-time order updates for a smooth delivery experience",
-    image: "/images/Foodhub.png",
-    technologies: ["ReactJs", "NextJs", "Redux", "MongoDB", "Typescript"],
+      "A food ordering platform with secure login, cart, menu browsing, and real-time order updates.",
+    image: "/images/FoodHub.png",
+    technologies: ["React", "Next.js", "Redux", "MongoDB", "TypeScript"],
     liveUrl: "https://example.com",
     githubUrl: "https://github.com/example",
   },
   {
     id: "4",
-    title: "Portfolio Website",
-    description:
-      "A modern, responsive portfolio website built with Next.js and Framer Motion, featuring smooth animations and glassmorphism effects.",
-    image: "/images/portfolio.png",
-    technologies: ["Next.js", "TypeScript", "Framer Motion", "Tailwind CSS"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/example",
-  },
-  {
-    id: "5",
-    title: "Weather Dashboard",
-    description:
-      "A weather dashboard that displays current weather conditions, forecasts, and interactive maps using weather APIs.",
-    image: "/images/weather.png",
-    technologies: ["React", "TypeScript", "Chart.js", "OpenWeather API"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/example",
-  },
-  {
-    id: "6",
     title: "Microservice based Social Media API",
     description:
       "A scalable social media backend built with a microservices architecture, featuring user authentication, post management, follow system, and real-time notifications.",
-    image: "/images/social.png",
+    image: "/images/API.png",
     technologies: [
       "Node.js",
       "Express",
@@ -90,45 +70,42 @@ export default function Projects() {
     <SectionWrapper
       id="projects"
       title="Featured Projects"
-      subtitle="Some of my recent work"
-      className="bg-gray-50 dark:bg-gray-800"
+      subtitle="Some of my latest work"
+      className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800"
     >
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
         {projects.map((project, index) => (
           <motion.div
             key={project.id}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 }}
-            whileHover={{ y: -10 }}
+            transition={{ delay: index * 0.15 }}
+            whileHover={{ y: -8 }}
             className="group"
           >
-            <Card tilt className="h-full flex flex-col overflow-hidden">
-              {/* Project Image with Aspect Ratio */}
-              <div className="relative aspect-video rounded-t-lg overflow-hidden bg-gradient-to-br from-purple-400 to-blue-500">
-                {project.image ? (
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-110"
-                  />
-                ) : (
-                  <div className="absolute inset-0 flex items-center justify-center text-white text-6xl font-bold opacity-20">
-                    {project.title.charAt(0)}
-                  </div>
-                )}
+            <Card
+              className="h-full flex flex-col overflow-hidden border border-gray-200 dark:border-gray-700 
+              bg-white/80 dark:bg-gray-900/60 backdrop-blur-lg shadow-lg rounded-2xl"
+            >
+              {/* Project Image */}
+              <div className="relative aspect-video overflow-hidden rounded-t-2xl">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
 
-                {/* Overlay with links */}
-                <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center space-x-4">
+                {/* Overlay buttons */}
+                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center gap-6">
                   {project.liveUrl && (
                     <motion.a
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      className="p-3 bg-white rounded-full text-gray-800 hover:text-purple-600 transition-colors"
+                      whileTap={{ scale: 0.95 }}
+                      className="p-3 rounded-full bg-white/90 shadow-md hover:bg-purple-500 hover:text-white transition-colors"
                     >
                       <Eye size={20} />
                     </motion.a>
@@ -139,8 +116,8 @@ export default function Projects() {
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      className="p-3 bg-white rounded-full text-gray-800 hover:text-purple-600 transition-colors"
+                      whileTap={{ scale: 0.95 }}
+                      className="p-3 rounded-full bg-white/90 shadow-md hover:bg-purple-500 hover:text-white transition-colors"
                     >
                       <Github size={20} />
                     </motion.a>
@@ -150,34 +127,31 @@ export default function Projects() {
 
               {/* Project Content */}
               <div className="flex-1 p-6 flex flex-col">
-                <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-gray-200 group-hover:text-purple-600 transition-colors">
+                <h3 className="text-2xl font-bold mb-2 text-gray-800 dark:text-gray-100 group-hover:text-purple-600 transition-colors">
                   {project.title}
                 </h3>
-
-                <p className="text-gray-600 dark:text-gray-300 mb-4 flex-1 leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-300 flex-1 mb-4">
                   {project.description}
                 </p>
 
                 {/* Technologies */}
-                <div className="mb-4">
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2 py-1 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 rounded text-xs font-medium"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {project.technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-3 py-1 bg-purple-100/70 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 rounded-full text-xs font-medium shadow-sm"
+                    >
+                      {tech}
+                    </span>
+                  ))}
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex gap-2 mt-auto">
+                <div className="flex gap-3 mt-auto">
                   {project.liveUrl && (
                     <Button size="sm" href={project.liveUrl} className="flex-1">
                       <ExternalLink size={16} className="mr-2" />
-                      Live Demo
+                      Live
                     </Button>
                   )}
                   {project.githubUrl && (
@@ -203,12 +177,13 @@ export default function Projects() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
-        className="text-center mt-12"
+        className="text-center mt-14"
       >
         <Button
           size="lg"
           href="https://github.com/Gagan956?tab=repositories"
           variant="outline"
+          className="hover:bg-purple-600 hover:text-white"
         >
           View More Projects
           <ExternalLink size={20} className="ml-2" />

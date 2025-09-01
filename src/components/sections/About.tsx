@@ -2,15 +2,16 @@
 
 import { motion } from "framer-motion";
 import SectionWrapper from "@/components/ui/SectionWrapper";
-import Card from "@/components/ui/Card";
 import Image from "next/image";
+import Button from "../ui/Button";
+import { Download, Mail } from "lucide-react";
 
 export default function About() {
   const stats = [
     { label: "Years Experience", value: "0.6" },
     { label: "Projects Completed", value: "10+" },
     { label: "Technologies", value: "10+" },
-    { label: "Happy Clients", value: "2+" },
+    { label: "Happy Clients", value: "100%" },
   ];
 
   return (
@@ -36,11 +37,14 @@ export default function About() {
               className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-400 to-blue-500 opacity-20"
             />
 
-            {/* Profile image container */}
+            {/* Profile image */}
             <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white dark:border-gray-700 shadow-2xl">
-              <div className="w-full h-full bg-gradient-to-br from-purple-400 to-blue-500 flex items-center justify-center text-white text-6xl font-bold">
-               <Image src={"/photo.jpg"} alt="Profile Picture" layout="fill" objectFit="cover" />
-              </div>
+              <Image
+                src={"/photo.jpg"}
+                alt="Profile Picture"
+                layout="fill"
+                objectFit="cover"
+              />
             </div>
 
             {/* Floating elements */}
@@ -74,20 +78,14 @@ export default function About() {
               Node.js, Express, TypeScript, MongoDB, Redis, PostgreSQL, Next.js,
               and React.js. I enjoy building innovative and user-friendly web
               applications, combining scalable backend systems with modern,
-              responsive frontends. With a strong focus on clean code,
-              performance, and UI/UX, I strive to deliver web solutions that are
-              both efficient and impactful.{" "}
+              responsive frontends.
             </p>
-
             <p>
               My journey in development began with curiosity and has grown into
-              strong expertise in both frontend and backend. I’ve worked with
-              Node.js, Express, TypeScript, MongoDB, Redis, PostgreSQL, Next.js,
-              and React.js, building scalable and user-friendly web
-              applications. I focus on writing clean, maintainable code and
-              creating seamless digital experiences.
+              strong expertise in both frontend and backend. I focus on writing
+              clean, maintainable code and creating seamless digital
+              experiences.
             </p>
-
             <p>
               When I’m not coding, I explore new technologies, work on side
               projects, and share knowledge with the developer community.
@@ -113,6 +111,36 @@ export default function About() {
               </motion.div>
             ))}
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.9 }}
+            className="flex flex-col sm:flex-row gap-4 pt-6"
+          >
+            {/* Action Buttons */}
+            <div className="flex flex-wrap gap-4 pt-8">
+              {/* Download Resume */}
+              <a
+                href="https://drive.google.com/uc?export=download&id=1ZUeIzvTr7B04gTP7Dr6YiB1HzbdMWTSH"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button className="group">
+                  <Download className="mr-2 w-5 h-5 group-hover:animate-bounce" />
+                  Download Resume
+                </Button>
+              </a>
+
+              {/* Get in Touch */}
+              <a href="mailto:gagansharma9560@gmail.com">
+                <Button variant="secondary" className="group">
+                  <Mail className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
+                  Get In Touch
+                </Button>
+              </a>
+            </div>
+          </motion.div>
 
           {/* Skills Preview */}
           <div className="pt-6">

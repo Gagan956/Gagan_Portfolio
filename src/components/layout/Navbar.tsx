@@ -52,7 +52,7 @@ export default function Navbar() {
             className="text-2xl font-bold gradient-text cursor-pointer"
             onClick={() => handleNavClick('#home')}
           >
-            Gagan
+           Portfolio
           </motion.div>
 
           {/* Desktop Navigation */}

@@ -1,3 +1,6 @@
+import { ComponentType } from 'react';
+import { LucideProps } from 'lucide-react';
+
 export interface Project {
   id: string;
   title: string;
@@ -20,7 +23,7 @@ export interface SocialLink {
   id: string;
   name: string;
   url: string;
-  icon: string;
+   icon: ComponentType<LucideProps>;
 }
 
 export interface NavItem {
@@ -34,3 +37,5 @@ export interface ContactForm {
   email: string;
   message: string;
 }
+
+

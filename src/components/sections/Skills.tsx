@@ -27,6 +27,7 @@ const skills: Skill[] = [
   { id: 'git', name: 'Git', icon: '📝', category: 'tools', proficiency: 88 },
   { id: 'docker', name: 'Docker', icon: '🐳', category: 'tools', proficiency: 60 },
   { id: 'aws', name: 'AWS', icon: '☁️', category: 'tools', proficiency: 50 },
+  { id: 'Javascript', name: 'javascript', icon: '🐙', category: 'tools', proficiency: 90 },
 ];
 
 const categories = [

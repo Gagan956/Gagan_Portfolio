@@ -9,10 +9,10 @@ import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, Instagram } from 
 import { SocialLink } from '@/types';
 
 const socialLinks: SocialLink[] = [
-  { id: 'github', name: 'GitHub', url: 'https://github.com/Gagan956', icon: 'github' },
-  { id: 'linkedin', name: 'LinkedIn', url: 'https://linkedin.com/in/gagan9560', icon: 'linkedin' },
-  { id: 'twitter', name: 'Twitter', url: 'https://twitter.com', icon: 'twitter' },
-  { id: 'instagram', name: 'Instagram', url: 'https://www.instagram.com/its_gagan81?igsh=emp5MXc0bmdzM3hz', icon: 'instagram' },
+  { id: 'github', name: 'GitHub', url: 'https://github.com/Gagan956', icon: Github },
+  { id: 'linkedin', name: 'LinkedIn', url: 'https://linkedin.com/in/gagan9560', icon: Linkedin },
+  { id: 'twitter', name: 'Twitter', url: 'https://twitter.com', icon: Twitter },
+  { id: 'instagram', name: 'Instagram', url: 'https://www.instagram.com/its_gagan81?igsh=emp5MXc0bmdzM3hz', icon: Instagram },
 ];
 
 const contactInfo = [
@@ -20,13 +20,13 @@ const contactInfo = [
     icon: Mail,
     title: 'Email',
     value: 'gagansharma9560@gmail.com',
-    href: 'gagansharma9560@gmail.com', 
+    href: 'mailto:gagansharma9560@gmail.com', 
   },
   {
     icon: Phone,
     title: 'Phone',
     value: '9354371766',
-    href: '9354371766',
+    href: 'tel:9354371766',
   },
   {
     icon: MapPin,
@@ -52,13 +52,7 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
     console.log('Form submitted:', formData);
-  };
-
-  const getIconComponent = (iconName: string) => {
-    const icons = { Github, Linkedin, Twitter, Instagram };
-    return icons[iconName as keyof typeof icons] || Github;
   };
 
   return (
@@ -122,7 +116,7 @@ export default function Contact() {
             </h4>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => {
-                const IconComponent = getIconComponent(social.icon);
+                const IconComponent = social.icon;
                 return (
                   <motion.a
                     key={social.id}
