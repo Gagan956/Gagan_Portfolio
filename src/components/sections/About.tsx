@@ -1,0 +1,147 @@
+"use client";
+
+import { motion } from "framer-motion";
+import SectionWrapper from "@/components/ui/SectionWrapper";
+import Card from "@/components/ui/Card";
+import Image from "next/image";
+
+export default function About() {
+  const stats = [
+    { label: "Years Experience", value: "0.6" },
+    { label: "Projects Completed", value: "10+" },
+    { label: "Technologies", value: "10+" },
+    { label: "Happy Clients", value: "2+" },
+  ];
+
+  return (
+    <SectionWrapper
+      id="about"
+      title="About Me"
+      subtitle="Get to know me better"
+      className="bg-gray-50 dark:bg-gray-800"
+    >
+      <div className="grid lg:grid-cols-2 gap-12 items-center">
+        {/* Profile Picture */}
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="relative"
+        >
+          <div className="relative w-80 h-80 mx-auto">
+            {/* Animated background circle */}
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-400 to-blue-500 opacity-20"
+            />
+
+            {/* Profile image container */}
+            <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white dark:border-gray-700 shadow-2xl">
+              <div className="w-full h-full bg-gradient-to-br from-purple-400 to-blue-500 flex items-center justify-center text-white text-6xl font-bold">
+               <Image src={"/photo.jpg"} alt="Profile Picture" layout="fill" objectFit="cover" />
+              </div>
+            </div>
+
+            {/* Floating elements */}
+            <motion.div
+              animate={{ y: [-10, 10, -10] }}
+              transition={{ duration: 3, repeat: Infinity }}
+              className="absolute -top-4 -right-4 w-8 h-8 bg-yellow-400 rounded-full opacity-80"
+            />
+            <motion.div
+              animate={{ y: [10, -10, 10] }}
+              transition={{ duration: 4, repeat: Infinity }}
+              className="absolute -bottom-4 -left-4 w-6 h-6 bg-pink-400 rounded-full opacity-80"
+            />
+          </div>
+        </motion.div>
+
+        {/* Content */}
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="space-y-6"
+        >
+          <h3 className="text-3xl font-bold gradient-text mb-4">
+            Passionate Full Stack Developer
+          </h3>
+
+          <div className="space-y-4 text-gray-600 dark:text-gray-300 leading-relaxed">
+            <p>
+              I’m a dedicated full-stack developer with hands-on experience in
+              Node.js, Express, TypeScript, MongoDB, Redis, PostgreSQL, Next.js,
+              and React.js. I enjoy building innovative and user-friendly web
+              applications, combining scalable backend systems with modern,
+              responsive frontends. With a strong focus on clean code,
+              performance, and UI/UX, I strive to deliver web solutions that are
+              both efficient and impactful.{" "}
+            </p>
+
+            <p>
+              My journey in development began with curiosity and has grown into
+              strong expertise in both frontend and backend. I’ve worked with
+              Node.js, Express, TypeScript, MongoDB, Redis, PostgreSQL, Next.js,
+              and React.js, building scalable and user-friendly web
+              applications. I focus on writing clean, maintainable code and
+              creating seamless digital experiences.
+            </p>
+
+            <p>
+              When I’m not coding, I explore new technologies, work on side
+              projects, and share knowledge with the developer community.
+            </p>
+          </div>
+
+          {/* Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6">
+            {stats.map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className="text-center"
+              >
+                <div className="text-3xl font-bold gradient-text mb-1">
+                  {stat.value}
+                </div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Skills Preview */}
+          <div className="pt-6">
+            <h4 className="text-xl font-semibold mb-4">
+              Quick Skills Overview
+            </h4>
+            <div className="flex flex-wrap gap-2">
+              {[
+                "React",
+                "Next.js",
+                "TypeScript",
+                "Node.js",
+                "MongoDB",
+                "PostgreSQL",
+              ].map((skill, index) => (
+                <motion.span
+                  key={skill}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium"
+                >
+                  {skill}
+                </motion.span>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </SectionWrapper>
+  );
+}
