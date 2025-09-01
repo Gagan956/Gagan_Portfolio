@@ -77,10 +77,10 @@ export default function Contact() {
         >
           <div>
             <h3 className="text-3xl font-bold gradient-text mb-6">
-              Let's Connect
+              Let&#39;s Connect
             </h3>
             <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-8">
-              I'm always interested in new opportunities and exciting projects. 
+              I&#39;m always interested in new opportunities and exciting projects. 
               Whether you have a question or just want to say hi, feel free to reach out!
             </p>
           </div>

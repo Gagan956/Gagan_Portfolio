@@ -114,7 +114,7 @@ export default function Skills() {
             Always Learning
           </h3>
           <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-            I'm constantly expanding my skill set and staying up-to-date with the latest 
+            I&#39;m constantly expanding my skill set and staying up-to-date with the latest 
             technologies and best practices. I believe in continuous learning and 
             adapting to new challenges in the ever-evolving world of web development.
           </p>
