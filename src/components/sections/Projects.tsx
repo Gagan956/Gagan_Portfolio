@@ -31,7 +31,7 @@ const projects: Project[] = [
     title: "Ecommerce SnapShop shopping site",
     description:
       "Snapshap is a full-stack e-commerce platform that lets users browse products, add them to a cart, and place secure orders with integrated payments.",
-    image: "/images/SnapShop.png",
+    image: "/images/Medimeet.png",
     technologies: [
       "Reactjs",
       "NodeJs",
