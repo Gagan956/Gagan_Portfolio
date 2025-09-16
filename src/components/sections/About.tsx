@@ -1,10 +1,11 @@
-"use client";
+'use client';
 
 import { motion } from "framer-motion";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import Image from "next/image";
 import Button from "../ui/Button";
 import { Download, Mail } from "lucide-react";
+import Experience from "./Experience"; // Import Experience component
 
 export default function About() {
   const stats = [
@@ -30,14 +31,11 @@ export default function About() {
           className="relative"
         >
           <div className="relative w-80 h-80 mx-auto">
-            {/* Animated background circle */}
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
               className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-400 to-blue-500 opacity-20"
             />
-
-            {/* Profile image */}
             <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white dark:border-gray-700 shadow-2xl">
               <Image
                 src={"/photo.jpg"}
@@ -46,8 +44,6 @@ export default function About() {
                 objectFit="cover"
               />
             </div>
-
-            {/* Floating elements */}
             <motion.div
               animate={{ y: [-10, 10, -10] }}
               transition={{ duration: 3, repeat: Infinity }}
@@ -112,15 +108,14 @@ export default function About() {
             ))}
           </div>
 
+          {/* Action Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.9 }}
             className="flex flex-col sm:flex-row gap-4 pt-6"
           >
-            {/* Action Buttons */}
             <div className="flex flex-wrap gap-4 pt-8">
-              {/* Download Resume */}
               <a
                 href="https://drive.google.com/uc?export=download&id=1ZUeIzvTr7B04gTP7Dr6YiB1HzbdMWTSH"
                 target="_blank"
@@ -132,7 +127,6 @@ export default function About() {
                 </Button>
               </a>
 
-              {/* Get in Touch */}
               <a href="mailto:gagansharma9560@gmail.com">
                 <Button variant="secondary" className="group">
                   <Mail className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
@@ -141,35 +135,11 @@ export default function About() {
               </a>
             </div>
           </motion.div>
-
-          {/* Skills Preview */}
-          <div className="pt-6">
-            <h4 className="text-xl font-semibold mb-4">
-              Quick Skills Overview
-            </h4>
-            <div className="flex flex-wrap gap-2">
-              {[
-                "React",
-                "Next.js",
-                "TypeScript",
-                "Node.js",
-                "MongoDB",
-                "PostgreSQL",
-              ].map((skill, index) => (
-                <motion.span
-                  key={skill}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium"
-                >
-                  {skill}
-                </motion.span>
-              ))}
-            </div>
-          </div>
         </motion.div>
       </div>
+
+      {/* Add Experience Component Here */}
+      <Experience />
     </SectionWrapper>
   );
 }
