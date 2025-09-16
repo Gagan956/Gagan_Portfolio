@@ -62,7 +62,7 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
           ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-lg'
-          : 'bg-transparent'
+          : 'bg-white/70 dark:bg-gray-900/70 backdrop-blur-md shadow-sm md:bg-transparent md:shadow-none'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -70,19 +70,19 @@ export default function Navbar() {
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="text-2xl font-bold gradient-text cursor-pointer"
+            className="text-2xl font-bold gradient-text cursor-pointer shrink-0"
             onClick={() => handleNavClick('home')}
           >
             Portfolio
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex space-x-6 lg:space-x-8">
             {navItems.map((item) => (
               <motion.button
                 key={item.id}
                 whileHover={{ y: -2 }}
-                className={`nav-link font-medium ${
+                className={`nav-link text-sm lg:text-base font-medium ${
                   activeSection === item.id
                     ? 'text-purple-600 dark:text-purple-400'
                     : 'text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'
@@ -99,7 +99,8 @@ export default function Navbar() {
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
+              className="shrink-0 p-2 rounded-md text-gray-900 dark:text-gray-100 hover:text-purple-600 dark:hover:text-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500/40"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </motion.button>
@@ -111,17 +112,17 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white dark:bg-gray-900 shadow-lg rounded-lg mt-2"
+            className="md:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg rounded-lg mt-2"
           >
-            <div className="px-2 pt-2 pb-3 space-y-1">
+            <div className="px-3 pt-3 pb-4 space-y-1">
               {navItems.map((item) => (
                 <motion.button
                   key={item.id}
                   whileHover={{ x: 5 }}
-                  className={`block w-full text-left px-3 py-2 rounded-md font-medium ${
+                  className={`block w-full text-left px-4 py-3 rounded-md font-medium text-base ${
                     activeSection === item.id
                       ? 'text-purple-600 dark:text-purple-400'
-                      : 'text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-gray-100 dark:hover:bg-gray-800'
+                      : 'text-gray-800 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-gray-100 dark:hover:bg-gray-800'
                   }`}
                   onClick={() => handleNavClick(item.id)}
                 >

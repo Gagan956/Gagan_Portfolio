@@ -110,7 +110,7 @@ export default function Projects() {
       subtitle="Some of my latest work"
       className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800"
     >
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3 md:gap-10">
         {projects.map((project, index) => (
           <motion.div
             key={project.id}
@@ -118,26 +118,27 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.15 }}
             whileHover={{ y: -8 }}
+            viewport={{ once: true, amount: 0.2 }}
             className="group"
           >
             <Card
               className="h-full flex flex-col overflow-hidden border border-gray-200 dark:border-gray-700 
-              bg-white/80 dark:bg-gray-900/60 backdrop-blur-lg shadow-lg hover:shadow-2xl transition-all duration-300 rounded-2xl"
+              bg-white/80 dark:bg-gray-900/60 backdrop-blur-lg shadow-lg hover:shadow-2xl transition-all duration-300 rounded-2xl focus-within:ring-2 focus-within:ring-purple-500/40"
             >
               {/* Project Image */}
-              <div className="relative w-full aspect-[16/9] overflow-hidden rounded-t-2xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+              <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] overflow-hidden rounded-t-2xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
                 <Image
                   src={project.image}
                   alt={project.title}
                   width={800}
                   height={450}
-                  className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover md:object-contain transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   priority={index === 0}
                 />
 
                 {/* Overlay buttons */}
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center gap-6">
+                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all duration-300 flex items-center justify-center gap-6">
                   {project.liveUrl && (
                     <motion.a
                       href={project.liveUrl}
@@ -166,11 +167,11 @@ export default function Projects() {
               </div>
 
               {/* Project Content */}
-              <div className="flex-1 p-6 flex flex-col">
-                <h3 className="text-2xl font-bold mb-2 text-gray-800 dark:text-gray-100 group-hover:text-purple-600 transition-colors">
+              <div className="flex-1 p-5 sm:p-6 flex flex-col">
+                <h3 className="text-xl sm:text-2xl font-bold mb-2 text-gray-800 dark:text-gray-100 group-hover:text-purple-500 transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 flex-1 mb-4">
+                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 flex-1 mb-4">
                   {project.description}
                 </p>
 
@@ -179,7 +180,7 @@ export default function Projects() {
                   {project.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1 bg-purple-100/70 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 rounded-full text-xs font-medium shadow-sm"
+                      className="px-3 py-1 bg-purple-100/70 dark:bg-purple-900/60 text-purple-700 dark:text-purple-200 rounded-full text-[11px] sm:text-xs font-medium shadow-sm"
                     >
                       {tech}
                     </span>
@@ -187,9 +188,9 @@ export default function Projects() {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex gap-3 mt-auto">
+                <div className="flex gap-3 mt-auto flex-col sm:flex-row">
                   {project.liveUrl && (
-                    <Button size="sm" href={project.liveUrl} className="flex-1">
+                    <Button size="sm" href={project.liveUrl} className="w-full sm:flex-1">
                       <ExternalLink size={16} className="mr-2" />
                       Live
                     </Button>
@@ -199,7 +200,7 @@ export default function Projects() {
                       variant="outline"
                       size="sm"
                       href={project.githubUrl}
-                      className="flex-1"
+                      className="w-full sm:flex-1"
                     >
                       <Github size={16} className="mr-2" />
                       Code
@@ -217,6 +218,7 @@ export default function Projects() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
+        viewport={{ once: true, amount: 0.2 }}
         className="text-center mt-14"
       >
         <Button

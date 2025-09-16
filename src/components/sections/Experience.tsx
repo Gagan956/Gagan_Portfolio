@@ -39,14 +39,26 @@ export default function Experience() {
           </ul>
         </div>
 
-        {/* Certificate Image */}
+        {/* Certificate Image - Mobile visible */}
+        <div className="md:hidden">
+          <div className="relative w-full aspect-[4/3] bg-gray-100 dark:bg-gray-800 rounded-xl overflow-hidden">
+            <Image
+              src="/images/certificate.jpg"
+              alt="House of MarkTech Certificate"
+              fill
+              className="object-contain"
+            />
+          </div>
+        </div>
+
+        {/* Certificate Image - Desktop overlay on hover */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileHover={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-60 flex items-center justify-center z-0 pointer-events-none group-hover:z-20 group-hover:pointer-events-auto"
+          className="hidden md:flex absolute top-0 left-0 w-full h-full bg-black/60 items-center justify-center z-0 pointer-events-none group-hover:z-20 group-hover:pointer-events-auto"
         >
-          <div className="relative w-64 h-64">
+          <div className="relative w-80 h-80">
             <Image
               src="/images/certificate.jpg"
               alt="House of MarkTech Certificate"
