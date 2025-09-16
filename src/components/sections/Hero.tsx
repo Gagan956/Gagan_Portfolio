@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import Button from '@/components/ui/Button';
-import { ChevronDown, Github, Linkedin, Twitter } from 'lucide-react';
+import { ChevronDown, Github, Linkedin, X } from 'lucide-react';
 
 export default function Hero() {
   const [text, setText] = useState('');
@@ -58,7 +58,7 @@ export default function Hero() {
             transition={{ delay: 0.2 }}
             className="text-xl md:text-2xl mb-4 font-light"
           >
-            Hello, I'm
+            Hello, I&#39;m
           </motion.p>
 
           {/* Name */}
@@ -84,7 +84,7 @@ export default function Hero() {
               transition={{ duration: 0.8, repeat: Infinity }}
               className="ml-1"
             >
-              |
+              🫡
             </motion.span>
           </motion.div>
 
@@ -124,7 +124,7 @@ export default function Hero() {
             {[
               { icon: Github, href: 'https://github.com/Gagan956', label: 'GitHub' },
               { icon: Linkedin, href: 'https://linkedin.com/in/gagan9560', label: 'LinkedIn' },
-              { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
+              { icon: X, href: 'https://x.com', label: 'x' },
             ].map((social) => (
               <motion.a
                 key={social.label}

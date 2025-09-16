@@ -28,6 +28,24 @@ const projects: Project[] = [
   },
   {
     id: "2",
+    title: "Ecommerce SnapShop shopping site",
+    description:
+      "Snapshap is a full-stack e-commerce platform that lets users browse products, add them to a cart, and place secure orders with integrated payments.",
+    image: "/images/SnapShop.png",
+    technologies: [
+      "Reactjs",
+      "NodeJs",
+      "Express",
+      "MongoDB",
+      "Cloudinary",
+      "Stripe",
+      "Nodemailer",
+    ],
+    liveUrl: "https://snap-shop-47s1.vercel.app/",
+    githubUrl: "https://github.com/Gagan956/SnapShop.git",
+  },
+  {
+    id: "3",
     title: "Hireme",
     description:
       "A frontend job portal built with Next.js and TypeScript, featuring listings, applications, and a responsive UI.",
@@ -37,7 +55,7 @@ const projects: Project[] = [
     githubUrl: "https://github.com/Gagan956/Hireme.git",
   },
   {
-    id: "3",
+    id: "4",
     title: "Foodhub",
     description:
       "A food ordering platform with secure login, cart, menu browsing, and real-time order updates.",
@@ -47,7 +65,7 @@ const projects: Project[] = [
     githubUrl: "https://github.com/example",
   },
   {
-    id: "4",
+    id: "5",
     title: "Microservice based Social Media API",
     description:
       "A scalable social media backend built with a microservices architecture, featuring user authentication, post management, follow system, and real-time notifications.",
@@ -63,6 +81,25 @@ const projects: Project[] = [
     liveUrl: "https://github.com/Gagan956/Social-Media-App.git",
     githubUrl: "https://github.com/Gagan956/Social-Media-App.git",
   },
+  {
+    id: "6",
+    title: "Taskify-Task management app",
+    description:
+      "Task Manager is a lightweight app that fetches tasks from Airtable, caches them in Redis for faster performance, and displays them in a clean, organized table with real-time sync.",
+    image: "/images/Todo.png",
+    technologies: [
+      "ReactJs",
+      "NodeJs",
+      "Express",
+      "Typescript",
+      "MongoDB",
+      "Airtable",
+      "Redis",
+    ],
+    liveUrl: "https://task-mauve-six.vercel.app/",
+    githubUrl: "https://github.com/Gagan956/task.git",
+  },
+  
 ];
 
 export default function Projects() {
@@ -85,15 +122,18 @@ export default function Projects() {
           >
             <Card
               className="h-full flex flex-col overflow-hidden border border-gray-200 dark:border-gray-700 
-              bg-white/80 dark:bg-gray-900/60 backdrop-blur-lg shadow-lg rounded-2xl"
+              bg-white/80 dark:bg-gray-900/60 backdrop-blur-lg shadow-lg hover:shadow-2xl transition-all duration-300 rounded-2xl"
             >
               {/* Project Image */}
-              <div className="relative aspect-video overflow-hidden rounded-t-2xl">
+              <div className="relative w-full aspect-[16/9] overflow-hidden rounded-t-2xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
                 <Image
                   src={project.image}
                   alt={project.title}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  width={800}
+                  height={450}
+                  className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  priority={index === 0}
                 />
 
                 {/* Overlay buttons */}

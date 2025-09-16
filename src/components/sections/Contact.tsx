@@ -5,13 +5,13 @@ import { useState } from 'react';
 import SectionWrapper from '@/components/ui/SectionWrapper';
 import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Github, Linkedin, Instagram, X } from 'lucide-react';
 import { SocialLink } from '@/types';
 
 const socialLinks: SocialLink[] = [
   { id: 'github', name: 'GitHub', url: 'https://github.com/Gagan956', icon: Github },
   { id: 'linkedin', name: 'LinkedIn', url: 'https://linkedin.com/in/gagan9560', icon: Linkedin },
-  { id: 'twitter', name: 'Twitter', url: 'https://twitter.com', icon: Twitter },
+  { id: 'x', name: 'x', url: 'https://x.com', icon: X },
   { id: 'instagram', name: 'Instagram', url: 'https://www.instagram.com/its_gagan81?igsh=emp5MXc0bmdzM3hz', icon: Instagram },
 ];
 
