@@ -3,11 +3,12 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import { NavItem } from '@/types';
+import { NavItem } from '@/types'; 
 
 const navItems: NavItem[] = [
-  { id: 'home', label: 'Home', href: '#home' },
+ { id: 'home', label: 'Home', href: '#home' },
   { id: 'about', label: 'About', href: '#about' },
+   { id: 'experience', label: 'Experience', href: '#experience' },
   { id: 'skills', label: 'Skills', href: '#skills' },
   { id: 'projects', label: 'Projects', href: '#projects' },
   { id: 'contact', label: 'Contact', href: '#contact' },
@@ -16,21 +17,41 @@ const navItems: NavItem[] = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
+  // Navbar background on scroll
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (href: string) => {
+  // Highlight active section
+  useEffect(() => {
+    const handleSectionHighlight = () => {
+      let current = 'home';
+      navItems.forEach((item) => {
+        const section = document.getElementById(item.id);
+        if (section) {
+          const top = section.offsetTop - 100;
+          if (window.scrollY >= top) {
+            current = item.id;
+          }
+        }
+      });
+      setActiveSection(current);
+    };
+    window.addEventListener('scroll', handleSectionHighlight);
+    return () => window.removeEventListener('scroll', handleSectionHighlight);
+  }, []);
+
+  const handleNavClick = (id: string) => {
     setIsOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    const section = document.getElementById(id);
+    if (section) {
+      const yOffset = -80; // navbar height
+      const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
     }
   };
 
@@ -50,9 +71,9 @@ export default function Navbar() {
           <motion.div
             whileHover={{ scale: 1.05 }}
             className="text-2xl font-bold gradient-text cursor-pointer"
-            onClick={() => handleNavClick('#home')}
+            onClick={() => handleNavClick('home')}
           >
-           Portfolio
+            Portfolio
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -61,15 +82,19 @@ export default function Navbar() {
               <motion.button
                 key={item.id}
                 whileHover={{ y: -2 }}
-                className="nav-link text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 font-medium"
-                onClick={() => handleNavClick(item.href)}
+                className={`nav-link font-medium ${
+                  activeSection === item.id
+                    ? 'text-purple-600 dark:text-purple-400'
+                    : 'text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'
+                }`}
+                onClick={() => handleNavClick(item.id)}
               >
                 {item.label}
               </motion.button>
             ))}
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile Menu */}
           <div className="md:hidden">
             <motion.button
               whileTap={{ scale: 0.95 }}
@@ -81,7 +106,6 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
@@ -94,8 +118,12 @@ export default function Navbar() {
                 <motion.button
                   key={item.id}
                   whileHover={{ x: 5 }}
-                  className="block w-full text-left px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md font-medium"
-                  onClick={() => handleNavClick(item.href)}
+                  className={`block w-full text-left px-3 py-2 rounded-md font-medium ${
+                    activeSection === item.id
+                      ? 'text-purple-600 dark:text-purple-400'
+                      : 'text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-gray-100 dark:hover:bg-gray-800'
+                  }`}
+                  onClick={() => handleNavClick(item.id)}
                 >
                   {item.label}
                 </motion.button>

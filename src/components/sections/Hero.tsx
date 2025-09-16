@@ -6,20 +6,42 @@ import Button from '@/components/ui/Button';
 import { ChevronDown, Github, Linkedin, X } from 'lucide-react';
 
 export default function Hero() {
+  const roles = ['Full Stack Developer', 'Software Developer'];
   const [text, setText] = useState('');
-  const fullText = 'Full Stack Developer';
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [deleting, setDeleting] = useState(false);
 
+  // Typing effect
   useEffect(() => {
-    if (currentIndex < fullText.length) {
-      const timeout = setTimeout(() => {
-        setText(fullText.slice(0, currentIndex + 1));
-        setCurrentIndex(currentIndex + 1);
-      }, 100);
-      return () => clearTimeout(timeout);
-    }
-  }, [currentIndex, fullText]);
+    const currentRole = roles[roleIndex];
+    let timeout: NodeJS.Timeout;
 
+    if (!deleting && charIndex < currentRole.length) {
+      // Typing
+      timeout = setTimeout(() => {
+        setText(currentRole.slice(0, charIndex + 1));
+        setCharIndex(charIndex + 1);
+      }, 100);
+    } else if (deleting && charIndex > 0) {
+      // Deleting
+      timeout = setTimeout(() => {
+        setText(currentRole.slice(0, charIndex - 1));
+        setCharIndex(charIndex - 1);
+      }, 50);
+    } else if (!deleting && charIndex === currentRole.length) {
+      // Pause before deleting
+      timeout = setTimeout(() => setDeleting(true), 1000);
+    } else if (deleting && charIndex === 0) {
+      // Move to next role
+      setDeleting(false);
+      setRoleIndex((roleIndex + 1) % roles.length);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [charIndex, deleting, roleIndex, roles]);
+
+  // Floating particles
   const FloatingParticle = ({ delay = 0 }: { delay?: number }) => (
     <motion.div
       initial={{ opacity: 0, scale: 0 }}
@@ -35,15 +57,15 @@ export default function Hero() {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated Gradient Background */}
+      {/* Gradient Background */}
       <div className="absolute inset-0 gradient-bg" />
-      
-      {/* Floating Particles */}
-      {Array.from({ length: 20 }).map((_, i) => (
+
+      {/* Particles */}
+      {Array.from({ length: 30 }).map((_, i) => (
         <FloatingParticle key={i} delay={i * 0.1} />
       ))}
 
-      {/* Content */}
+      {/* Hero Content */}
       <div className="relative z-10 text-center text-white px-4">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -51,17 +73,10 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="max-w-4xl mx-auto"
         >
-          {/* Greeting */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="text-xl md:text-2xl mb-4 font-light"
-          >
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="text-xl md:text-2xl mb-4 font-light">
             Hello, I&#39;m
           </motion.p>
 
-          {/* Name */}
           <motion.h1
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -71,7 +86,7 @@ export default function Hero() {
             Gagan Sharma
           </motion.h1>
 
-          {/* Animated Role */}
+          {/* Typing Role */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -79,48 +94,25 @@ export default function Hero() {
             className="text-2xl md:text-4xl font-medium mb-8 h-12 flex items-center justify-center"
           >
             <span className="gradient-text">{text}</span>
-            <motion.span
-              animate={{ opacity: [1, 0] }}
-              transition={{ duration: 0.8, repeat: Infinity }}
-              className="ml-1"
-            >
+            <motion.span animate={{ opacity: [1, 0] }} transition={{ duration: 0.8, repeat: Infinity }} className="ml-1">
               🫡
             </motion.span>
           </motion.div>
 
           {/* Description */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-            className="text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed"
-          >
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }} className="text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
             I create beautiful, responsive, and user-friendly web applications 
             using modern technologies. Passionate about clean code and great user experiences.
           </motion.p>
 
           {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
-          >
-            <Button size="lg" href="#projects">
-              View My Work
-            </Button>
-            <Button variant="outline" size="lg" href="#contact">
-              Get In Touch
-            </Button>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1 }} className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+            <Button size="lg" href="#projects">View My Work</Button>
+            <Button variant="outline" size="lg" href="#contact">Get In Touch</Button>
           </motion.div>
 
           {/* Social Links */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2 }}
-            className="flex justify-center space-x-6"
-          >
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }} className="flex justify-center space-x-6">
             {[
               { icon: Github, href: 'https://github.com/Gagan956', label: 'GitHub' },
               { icon: Linkedin, href: 'https://linkedin.com/in/gagan9560', label: 'LinkedIn' },
@@ -144,18 +136,8 @@ export default function Hero() {
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="text-white cursor-pointer"
-          onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-        >
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }} className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+        <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 2, repeat: Infinity }} className="text-white cursor-pointer" onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}>
           <ChevronDown size={32} />
         </motion.div>
       </motion.div>

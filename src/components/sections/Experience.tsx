@@ -1,18 +1,18 @@
 'use client';
 
-import { motion } from "framer-motion";
-import Image from "next/image";
+import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function Experience() {
   return (
-    <div className="pt-12">
+    <section id="experience" className="pt-12 px-4 max-w-7xl mx-auto">
       <h4 className="text-2xl font-bold mb-6 gradient-text">Experience</h4>
 
       <motion.div
         whileHover={{ scale: 1.03 }}
         className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-lg flex flex-col md:flex-row gap-6 relative overflow-hidden group"
       >
-        {/* Experience Details */}
+        {/* Details */}
         <div className="flex-1 space-y-3 z-10 relative">
           <h5 className="text-xl font-semibold text-gray-800 dark:text-gray-100">
             House of MarkTech - Internship
@@ -39,7 +39,7 @@ export default function Experience() {
           </ul>
         </div>
 
-        {/* Certificate Image on Hover */}
+        {/* Certificate Image */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileHover={{ opacity: 1, y: 0 }}
@@ -56,6 +56,6 @@ export default function Experience() {
           </div>
         </motion.div>
       </motion.div>
-    </div>
+    </section>
   );
 }
