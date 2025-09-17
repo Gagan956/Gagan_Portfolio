@@ -99,7 +99,6 @@ const projects: Project[] = [
     liveUrl: "https://task-mauve-six.vercel.app/",
     githubUrl: "https://github.com/Gagan956/task.git",
   },
-  
 ];
 
 export default function Projects() {
@@ -132,7 +131,7 @@ export default function Projects() {
                   alt={project.title}
                   width={800}
                   height={450}
-                  className="w-full h-full object-cover md:object-contain transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-contain sm:object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   priority={index === 0}
                 />
@@ -190,7 +189,11 @@ export default function Projects() {
                 {/* Action Buttons */}
                 <div className="flex gap-3 mt-auto flex-col sm:flex-row">
                   {project.liveUrl && (
-                    <Button size="sm" href={project.liveUrl} className="w-full sm:flex-1">
+                    <Button
+                      size="sm"
+                      href={project.liveUrl}
+                      className="w-full sm:flex-1"
+                    >
                       <ExternalLink size={16} className="mr-2" />
                       Live
                     </Button>
