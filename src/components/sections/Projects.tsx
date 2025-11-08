@@ -46,6 +46,35 @@ const projects: Project[] = [
   },
   {
     id: "3",
+    title: "BookIt",
+    description:
+      "BookIt is a full-stack MERN application built with TypeScript and Next.js, enabling users to explore and book vacation experiences, hotels, and tourist activities through a clean and seamless booking flow.",
+    image: "/images/BookIt.png",
+    technologies: [
+      "Next.js",
+      "Redux",
+      "Tailwind CSS",
+      "TypeScript",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "rate limiting",
+    ],
+    liveUrl: "https://book-it-pearl-two.vercel.app/",
+    githubUrl: "https://github.com/Gagan956/BooKIt.git",
+  },
+  {
+    id: "4",
+    title: "SmartNotes",
+    description:
+      "SmartNotes is a full-stack note-taking web app that lets users create, edit, and organize notes with titles, content, and optional photos — a simple, fast, and smart digital notepad for managing ideas efficiently",
+    image: "/images/SmartNotes.png",
+    technologies: ["React", "Redux", "Tailwind CSS" ,"Nodejs, Express", "MongoDB"],
+    liveUrl: "https://smart-notes-delta-sand.vercel.app/",
+    githubUrl: "https://github.com/Gagan956/SmartNotes.git",
+  },
+  {
+    id: "5",
     title: "Hireme",
     description:
       "A frontend job portal built with Next.js and TypeScript, featuring listings, applications, and a responsive UI.",
@@ -55,7 +84,7 @@ const projects: Project[] = [
     githubUrl: "https://github.com/Gagan956/Hireme.git",
   },
   {
-    id: "4",
+    id: "6",
     title: "Foodhub",
     description:
       "A food ordering platform with secure login, cart, menu browsing, and real-time order updates.",
@@ -65,7 +94,7 @@ const projects: Project[] = [
     githubUrl: "https://github.com/example",
   },
   {
-    id: "5",
+    id: "7",
     title: "Microservice based Social Media API",
     description:
       "A scalable social media backend built with a microservices architecture, featuring user authentication, post management, follow system, and real-time notifications.",
@@ -82,7 +111,7 @@ const projects: Project[] = [
     githubUrl: "https://github.com/Gagan956/Social-Media-App.git",
   },
   {
-    id: "6",
+    id: "8",
     title: "Taskify-Task management app",
     description:
       "Task Manager is a lightweight app that fetches tasks from Airtable, caches them in Redis for faster performance, and displays them in a clean, organized table with real-time sync.",

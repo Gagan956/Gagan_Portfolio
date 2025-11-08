@@ -117,7 +117,7 @@ export default function About() {
           >
             <div className="flex flex-wrap gap-4 pt-8">
               <a
-                href="https://drive.google.com/uc?export=download&id=1ZUeIzvTr7B04gTP7Dr6YiB1HzbdMWTSH"
+                href="https://drive.google.com/file/d/19he0g6tEt-ZDYm-VoP7Y7M4z1GNTCijK/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
               >
